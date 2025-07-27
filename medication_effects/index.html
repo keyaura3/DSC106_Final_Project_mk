@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Medication Effects - An Interactive Story</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script type="module" src="../global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>The Sleep Medication Story</h1>
+            <p class="subtitle">How Temazepam Changes Sleep Architecture</p>
+            <p class="byline">An interactive exploration of clinical sleep research data</p>
+            <p class="names">By Matti Key, Connie Liu, Milan Rona, and Jas Sandhu</p>
+        </div>
+    </header>
+
+    <!-- Main scrollytelling content -->
+    <main class="content">
+        <div class="container">
+            
+            <!-- Introduction -->
+            <section class="intro-section">
+                <div class="intro-text">
+                    <h2>Understanding Sleep Medication Effects</h2>
+                    <p>There has long been debate about the usefulness of sleep medications. In the United States, roughly 1 in 7 people suffer from chronic insomnia, and sleep difficulties tend to increase with age. Studies indicate that approximately one-third of adults aged 65 and older use some form of sleep medication.
+
+                        Our project focuses on investigating the effects of a commonly prescribed sleep medication, temazepam, on individuals experiencing moderate difficulty falling asleep. Temazepam is a benzodiazepine used for the short-term treatment of insomnia. It works by slowing down brain activity to help induce and maintain sleep.
+                        
+                        Scientific research has demonstrated that temazepam can help reduce the time it takes to fall asleep, decrease nighttime awakenings, and improve overall sleep quality. However, questions remain regarding its effectiveness and impact on sleep architecture in different populations.
+                        
+                        To explore these effects, we analyzed sleep data obtained from PhysioNet, which includes polysomnographic recordings from 22 Caucasian male and female participants. These recordings were captured using a miniature telemetry tracking system, providing detailed insight into sleep patterns and physiological responses.
+                        <br>Using data from a controlled clinical trial of 22 subjects, we'll journey through the measurable differences between natural sleep and medicated sleep.</p>
+                </div>
+                <div class="scroll-indicator">
+                    <span>Scroll to explore</span>
+                    <div class="arrow-down">↓</div>
+                </div>
+            </section>
+
+            <!-- Scrollytelling sections -->
+            <div class="scrolly">
+                <div class="sticky-container">
+                    <div id="chart-container">
+                        <div id="main-visualization"></div>
+                    </div>
+                </div>
+
+                <div class="steps-container">
+                    
+                    <!-- Step 1: The Study Setup -->
+                    <div class="step" data-step="setup">
+                        <div class="step-content">
+                            <h3>The Clinical Trial</h3>
+                            <p>Our study followed 22 participants over multiple nights, comparing their sleep patterns on two different occasions:</p>
+                            <ul>
+                                <li><strong>Placebo night:</strong> Natural sleep with no active medication</li>
+                                <li><strong>Temazepam night:</strong> Sleep aided by 15-30mg of temazepam</li>
+                            </ul>
+                            <p>Each participant was monitored using polysomnography (sleep study equipment) to capture detailed brain activity, eye movements, and muscle tension throughout the night.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Sleep Efficiency -->
+                    <div class="step" data-step="efficiency">
+                        <div class="step-content">
+                            <h3>Dramatic Improvement in Sleep Efficiency</h3>
+                            <p>Sleep efficiency measures how much of your time in bed is actually spent sleeping. It's one of the most important indicators of sleep quality.</p>
+                            <p>The results were striking: participants went from an average of <strong>78% sleep efficiency</strong> on placebo nights to <strong>85% efficiency</strong> with temazepam.</p>
+                            <p>This 7-percentage-point improvement means spending less time lying awake in bed and more time in restorative sleep.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Wake Time Reduction -->
+                    <div class="step" data-step="wake-time">
+                        <div class="step-content">
+                            <h3>Less Time Awake During the Night</h3>
+                            <p>One of the most noticeable effects of temazepam was the reduction in nighttime awakenings.</p>
+                            <p>Participants spent an average of <strong>22% of the night awake</strong> on placebo, but only <strong>12% awake</strong> with temazepam.</p>
+                            <p>This represents nearly a 50% reduction in wake time – meaning more continuous, uninterrupted sleep throughout the night.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: REM Sleep Enhancement -->
+                    <div class="step" data-step="rem-sleep">
+                        <div class="step-content">
+                            <h3>Enhanced REM Sleep</h3>
+                            <p>REM (Rapid Eye Movement) sleep is crucial for cognitive function, memory consolidation, and emotional processing.</p>
+                            <p>Contrary to some medications that suppress REM sleep, temazepam actually enhanced it:</p>
+                            <ul>
+                                <li>Placebo nights: <strong>18% REM sleep</strong></li>
+                                <li>Temazepam nights: <strong>22% REM sleep</strong></li>
+                            </ul>
+                            <p>This 4-percentage-point increase suggests better cognitive restoration and emotional regulation.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Deep Sleep Patterns -->
+                    <div class="step" data-step="deep-sleep">
+                        <div class="step-content">
+                            <h3>Preserved Deep Sleep</h3>
+                            <p>Deep sleep (Stage N3) is essential for physical recovery, immune function, and memory consolidation.</p>
+                            <p>Many sleep medications can suppress deep sleep, but temazepam maintained healthy levels:</p>
+                            <ul>
+                                <li>Placebo: <strong>15% deep sleep</strong></li>
+                                <li>Temazepam: <strong>18% deep sleep</strong></li>
+                            </ul>
+                            <p>This preservation of deep sleep while improving other metrics makes temazepam particularly effective for overall sleep quality.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Sleep Architecture Comparison -->
+                    <div class="step" data-step="architecture">
+                        <div class="step-content">
+                            <h3>Complete Sleep Architecture</h3>
+                            <p>When we look at the complete picture of sleep stages throughout the night, the benefits of temazepam become clear.</p>
+                            <p>The medication doesn't just help you fall asleep – it fundamentally improves the quality and structure of your entire night's rest.</p>
+                            <p>Notice how the temazepam pattern shows:</p>
+                            <ul>
+                                <li>Less fragmented sleep</li>
+                                <li>More time in beneficial sleep stages</li>
+                                <li>Better sleep continuity</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 7: Individual Differences -->
+                    <div class="step" data-step="individual">
+                        <div class="step-content">
+                            <h3>Individual Response Patterns</h3>
+                            <p>While the treatment showed average improvements, individuals responded quite differently, and what mattered most wasn't age or demographics, but <strong title="How efficiently someone was sleeping before treatment began">baseline sleep quality</strong>.</p>
+                            <p>
+                                Participants who started with <strong title="Lower initial sleep efficiency gave more room for improvement">poorer baseline sleep</strong> often showed the greatest gains.
+                                On the other hand, those who were already sleeping well saw little to no benefit, and in some cases, even a decline.
+                            </p>
+                            <ul>
+                                <li><strong title="Those with room to improve benefited more">Poor baseline sleep = larger gains</strong></li>
+                                <li><strong title="Little room left for improvement">Good baseline sleep = smaller gains or no change</strong></li>
+                                <li><strong title="Sleep is complex and varies by person">Each response was highly individual</strong></li>
+                            </ul>
+                            <p>This underscores the value of personalized sleep care — understanding where someone starts helps determine the right treatment approach.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 8: Change -->
+                    <div class="step" data-step="change">
+                        <div class="step-content">
+                            <h3>How Temazepam Helps Poor Sleepers</h3>
+                            <p>Now, let's focus on the group of participants who experienced the most positive effects from temazepam. For these individuals, the medication led to clear improvements in their sleep architecture.</p>
+                            <p>
+                                Compared to placebo (<span style="color:#e57373;font-weight:bold;">red</span>), temazepam (<span style="color:#42a5f5;font-weight:bold;">blue</span>) resulted in:
+                            </p>
+                            <ul>
+                                <li><strong>Increased REM sleep</strong></li>
+                                <li><strong>Increased deep sleep</strong></li>
+                                <li><strong>Reduced wake time</strong> by almost half during the night</li>
+                            </ul>
+                            <p>
+                                For these poor sleepers, the time they previously spent awake was redistributed into more restorative REM and deep sleep. This shift highlights how temazepam can be especially beneficial for those who struggle most with sleep, helping them achieve a healthier, more restorative sleep pattern.
+                            </p>
+                            <p>
+                                <em>Note: In the chart, <span style="color:#e57373;">red bars</span> represent placebo nights and <span style="color:#42a5f5;">blue bars</span> represent temazepam nights.</em>
+                            </p>
+                        </div>
+                    </div>
+
+                    
+
+
+                    <!-- Step 9: Conclusion -->
+                    <div class="step" data-step="conclusion">
+                        <div class="step-content">
+                            <h3>The Bottom Line</h3>
+                            <p>This clinical data demonstrates that temazepam can significantly improve multiple dimensions of sleep quality:</p>
+                            <div class="summary-stats">
+                                <div class="stat">
+                                    <span class="stat-number">+7%</span>
+                                    <span class="stat-label">Sleep Efficiency</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">-45%</span>
+                                    <span class="stat-label">Wake Time</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">+22%</span>
+                                    <span class="stat-label">REM Sleep</span>
+                                </div>
+                            </div>
+                            <p>However, sleep medications should always be used under medical supervision and as part of a comprehensive approach to sleep health that includes proper sleep hygiene and lifestyle factors.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Call to action -->
+            <section class="cta-section">
+                <div class="cta-content">
+                    <h2>Explore Your Own Sleep Data</h2>
+                    <p>Want to analyze your personal sleep patterns? Try our interactive sleep quality predictor.</p>
+                    <a href="../index.html" class="cta-button">Analyze My Sleep</a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Based on clinical research data from polysomnography studies. Data visualization created with D3.js and Scrollama.</p>
+        </div>
+    </footer>
+
+    <script src="medication.js"></script>
+</body>
+</html>

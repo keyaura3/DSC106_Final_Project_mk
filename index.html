@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Quality Predictor</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Sleep Quality Predictor</h1>
+            <p class="subtitle">Analyze your sleep patterns using evidence-based research data</p>
+            <p> Compare your sleep patterns, including REM, deep, and light sleep, to evidence-based norms based on your age, gender and sleep duration. Get an understanding of your sleep profile and receive personalized feedback to see how you measure up and identify areas for improvement. </p>
+        </header>
+
+        <main class="main-content">
+            <section class="input-panel">
+                <h2>Sleep Assessment</h2>
+                
+                <div class="form-group">
+                    <label for="age">Age (years)</label>
+                    <input type="number" id="age" min="18" max="100" value="30" placeholder="Enter your age">
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender">
+                        <option value="F">Female</option>
+                        <option value="M">Male</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="total-sleep">Total Sleep Duration (hours)</label>
+                    <input type="number" id="total-sleep" min="1" max="12" step="0.5" value="8" placeholder="Hours of sleep">
+                </div>
+
+                <div class="sleep-stages">
+                    <h3>Sleep Stage Distribution</h3>
+                    <div class="stage-input">
+                        <label class="stage-label">Wake Time (%)</label>
+                        <div class="slider-container">
+                            <input type="range" id="wake-slider" class="stage-slider" min="0" max="100" value="5">
+                            <span id="wake-value" class="stage-value">5%</span>
+                        </div>
+                    </div>
+                    <div class="stage-input">
+                        <label class="stage-label">Light Sleep (%)</label>
+                        <div class="slider-container">
+                            <input type="range" id="light-slider" class="stage-slider" min="0" max="100" value="50">
+                            <span id="light-value" class="stage-value">50%</span>
+                        </div>
+                    </div>
+                    <div class="stage-input">
+                        <label class="stage-label">Deep Sleep (%)</label>
+                        <div class="slider-container">
+                            <input type="range" id="deep-slider" class="stage-slider" min="0" max="100" value="25">
+                            <span id="deep-value" class="stage-value">25%</span>
+                        </div>
+                    </div>
+                    <div class="stage-input">
+                        <label class="stage-label">REM Sleep (%)</label>
+                        <div class="slider-container">
+                            <input type="range" id="rem-slider" class="stage-slider" min="0" max="100" value="20">
+                            <span id="rem-value" class="stage-value">20%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="analyze-button" onclick="analyzeSleep()">
+                    Analyze Sleep Quality
+                </button>
+            </section>
+
+            <section class="visualization-panel">
+                <div class="score-section">
+                    <h2>Sleep Quality Assessment</h2>
+                    <div class="score-display">
+                        <div class="score-gauge">
+                            <svg width="180" height="180" id="score-gauge"></svg>
+                            <div class="score-text" id="score-text">--</div>
+                        </div>
+                        <div class="score-info">
+                            <h3 id="score-title">Sleep Quality Score</h3>
+                            <p id="score-description">
+                                Enter your sleep data to receive a personalized quality assessment
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-section">
+                    <h2>Comparative Analysis</h2>
+                    <div class="comparison-charts">
+                        <div class="chart-container">
+                            <h3>Sleep Efficiency vs. Age Group</h3>
+                            <svg width="100%" height="250" id="age-comparison"></svg>
+                            <p class="chart-description" id="age-comparison-text"></p>
+                        </div>
+                        <div class="chart-container">
+                            <h3>REM Sleep vs. Gender Average</h3>
+                            <svg width="100%" height="250" id="gender-comparison"></svg>
+                            <p class="chart-description" id="gender-comparison-text"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hypnogram-section">
+                    <h2>Sleep Architecture Visualization</h2>
+                    <div class="chart-container">
+                        <svg width="100%" height="220" id="hypnogram"></svg>
+                        <div class="legend">
+                            <div class="legend-item">
+                                <div class="legend-color wake"></div>
+                                <span>Wake</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color light"></div>
+                                <span>Light Sleep</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color deep"></div>
+                                <span>Deep Sleep</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color rem"></div>
+                                <span>REM Sleep</span>
+                            </div>
+                        </div>
+                        <p class="chart-description">
+                            This visualization shows your projected sleep pattern throughout the night based on your inputs.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Tooltip -->
+    <div class="tooltip" id="tooltip">
+        <div class="tooltip-title" id="tooltip-title"></div>
+        <div class="tooltip-content" id="tooltip-content"></div>
+    </div>
+
+    <script src="sleep_visualization.js"></script>
+</body>
+</html>
